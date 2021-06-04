@@ -7,6 +7,7 @@ async function initializeDBConnection() {
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useFindAndModify: false
   })
   console.log("successfully connected to db");
   } catch(error){

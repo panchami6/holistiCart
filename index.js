@@ -3,10 +3,9 @@ const bodyParser = require('body-parser')
 const mongoose = require("mongoose")
 const cors = require("cors")
 const { initializeDBConnection } = require("./db/db.connect.js")
-const { productsCollection } = require("./models/product.model");
 const products = require("./routes/product.router.js")
-// const home = require("./routes/home.router.js")
-// const cart = require("./routes/cart.router.js")
+const cart = require("./routes/cart.router.js")
+const wishlist = require("./routes/wishlist.router")
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,8 +17,8 @@ const PORT = 3000;
 initializeDBConnection();
 
 app.use("/products", products);
-// app.use("/home", home)
-// app.use("/cart", cart)
+app.use("/cart", cart)
+app.use("/wishlist", wishlist)
 
 app.get('/', (request, response) => {
   response.json({ hello: "world"})
