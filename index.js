@@ -6,10 +6,11 @@ const { initializeDBConnection } = require("./db/db.connect.js")
 const products = require("./routes/product.router.js")
 const cart = require("./routes/cart.router.js")
 const wishlist = require("./routes/wishlist.router")
+const authRoute = require("./routes/auth");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
 const PORT = 3000;
 
@@ -17,8 +18,9 @@ const PORT = 3000;
 initializeDBConnection();
 
 app.use("/products", products);
-app.use("/cart", cart)
-app.use("/wishlist", wishlist)
+app.use("/cart", cart);
+app.use("/wishlist", wishlist);
+app.use("/user", authRoute);
 
 app.get('/', (request, response) => {
   response.json({ hello: "world"})

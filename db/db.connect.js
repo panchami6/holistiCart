@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 
+// const CONNECT_DB = process.env['TOKEN_SECRET']
+
 // TODO: move to .env/sec
 async function initializeDBConnection() {
   try{
@@ -7,7 +9,8 @@ async function initializeDBConnection() {
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true 
   })
   console.log("successfully connected to db");
   } catch(error){
